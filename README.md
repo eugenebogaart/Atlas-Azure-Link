@@ -171,5 +171,7 @@ atlasclusterstring = [
 user1 = testuser
 ```
 
+Please note that the above endpoints do not include the private string.  It looks like an omission in the version 0.8 of the provider (mongodb/atlas).
+
 ## Known Bugs
 * let me know
