@@ -4,7 +4,7 @@
 Based on an small Proof of Concept to make Atlas available via Private linking in Azure in the same region, this script was generalized to automate all steps. 
 The documentation on how to do this in several manual steps is here: https://docs.atlas.mongodb.com/security-private-endpoint 
 
-The end result of the Terraform script is a project in Atlas + a Cluster + provisioned user, private linked to Azure with a 1 vm with public interface (ssh/key)
+The end result of the Terraform script is a project in Atlas + a Cluster + provisioned user, private linked to Azure with a 1 vm with public interface (ssh/key).
 The vm has already MongoDB client tools installed.
 
 ## Prerequisites:
