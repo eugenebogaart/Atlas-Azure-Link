@@ -152,6 +152,24 @@ In you favorite shell, run terraform apply and review the execution plan on what
 %>  terraform apply
 ```
 
+Your final result shoul look like:
+```
+Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
+
+Outputs:
+
+atlasclusterstring = [
+  {
+    "aws_private_link" = {}
+    "aws_private_link_srv" = {}
+    "private" = ""
+    "private_srv" = ""
+    "standard" = "mongodb://sample-shard-00-00.XXXXX.mongodb.net:27017,sample-shard-00-01.XXXXX.mongodb.net:27017,sample-shard-00-02.XXXXX.mongodb.net:27017/?ssl=true&authSource=admin&replicaSet=atlas-XXXXX-shard-0"
+    "standard_srv" = "mongodb+srv://sample.XXXXX.mongodb.net"
+  },
+]
+user1 = testuser
+```
 
 ## Known Bugs
 * let me know
