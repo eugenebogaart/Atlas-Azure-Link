@@ -25,7 +25,8 @@ Initializing provider plugins...
 * Run: terraform apply
 
 ## Todo:
-* open for suggestions
+* Test with terrafrom 14. and mongodb/atlas provider 0.8.1+ (does not work yet)
+* Print out private connection string when script finishes. (wait for > 0.8.2)
 
 ## Basic Terraform resources in script
 * mongodbatlas_project,  creates an empty project in your Atlas account
@@ -152,7 +153,7 @@ In you favorite shell, run terraform apply and review the execution plan on what
 %>  terraform apply
 ```
 
-Your final result shoul look like:
+Your final result should look like:
 ```
 Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
 
@@ -171,7 +172,7 @@ atlasclusterstring = [
 user1 = testuser
 ```
 
-Please note that the above endpoints do not include the private string.  It looks like an omission in the version 0.8 of the provider (mongodb/atlas).
+Please note that the above endpoints do not include the private string.  It looks like an omission in the version 0.8 of the provider (mongodb/atlas). 
 
 ## Known Bugs
 * let me know

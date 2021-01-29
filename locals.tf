@@ -29,7 +29,3 @@ locals {
   azure_vm_name		= "demo-link"
 }
  
-terraform {
-  required_version = ">= 0.13.5"
-}
-

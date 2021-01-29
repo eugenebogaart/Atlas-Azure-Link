@@ -77,6 +77,10 @@ output "atlasclusterstring" {
     value = mongodbatlas_cluster.this.connection_strings
 }
 
+output "atlasclusterstring_private" {
+    value = mongodbatlas_cluster.this.connection_strings
+}
+
 //DATABASE USER
 resource "mongodbatlas_database_user" "user1" {
   username           = local.admin_username
