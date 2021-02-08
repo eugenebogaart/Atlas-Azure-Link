@@ -83,11 +83,6 @@ variable "azure_tenant_id" {
   type = string
 }
 
-variable "ssh_keys_data" {
-  description = "Public key"
-  type = string
-}
-
 variable "public_key_path" {
   description = "Access path to public key"
   type = string
@@ -100,6 +95,11 @@ variable "private_key_path" {
 
 variable "admin_password" {
   description = "Generic password for demo resources"
+  type = string
+}
+
+variable "source_ip" {
+  description = "Limit vm access to this ip_address"
   type = string
 }
 ```
