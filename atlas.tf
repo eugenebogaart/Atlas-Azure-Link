@@ -30,8 +30,7 @@ resource "mongodbatlas_project" "proj1" {
 resource "mongodbatlas_privatelink_endpoint" "test" {
   project_id    = mongodbatlas_project.proj1.id
   provider_name = local.provider_name
-  # region        = local.region
-  region        = local.location_alt
+  region        = local.provider_region
 }
 
 resource "mongodbatlas_privatelink_endpoint_service" "test" {
