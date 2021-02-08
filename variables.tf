@@ -28,3 +28,8 @@ variable "admin_password" {
   type = string
 }
 
+variable "source_ip" {
+  description = "Limit vm access to this ip_address"
+  type = string
+}
+
