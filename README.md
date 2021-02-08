@@ -155,21 +155,28 @@ In you favorite shell, run terraform apply and review the execution plan on what
 
 Your final result should look like:
 ```
-Apply complete! Resources: 14 added, 0 changed, 0 destroyed.
+Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 
 Outputs:
 
-atlasclusterstring = [
-  {
-    "aws_private_link" = {}
-    "aws_private_link_srv" = {}
-    "private" = ""
-    "private_srv" = ""
-    "standard" = "mongodb://sample-shard-00-00.XXXXX.mongodb.net:27017,sample-shard-00-01.XXXXX.mongodb.net:27017,sample-shard-00-02.XXXXX.mongodb.net:27017/?ssl=true&authSource=admin&replicaSet=atlas-XXXXX-shard-0"
-    "standard_srv" = "mongodb+srv://sample.XXXXX.mongodb.net"
-  },
-]
+atlasclusterstring = mongodb+srv://sample-pl-0.xrbqa.mongodb.net
+public_ip_address = 42.71.150.20
 user1 = testuser
+```
+
+## Now login, if you have your ssh keys properly configured:
+```
+>$ ssh testuser@42.71.150.20
+...
+Last login: Mon Feb  8 09:47:34 2021 from **************************
+testuser@demo-link:~$ mongo mongodb+srv://sample-pl-0.xrbqa.mongodb.net --username testuser
+MongoDB shell version v4.4.3
+Enter password: 
+connecting to: mongodb://pl-0-westeurope-azure.xrbqa.mongodb.net:1026,pl-0-westeurope-azure.xrbqa.mongodb.net:1025,pl-0-westeurope-azure.xrbqa.mongodb.net:1024/?authSource=admin&compressors=disabled&gssapiServiceName=mongodb&replicaSet=atlas-zmjsri-shard-0&ssl=true
+Implicit session: session { "id" : UUID("8ee43f82-3da4-41c7-a36a-3baf93ca7464") }
+MongoDB server version: 4.2.12
+WARNING: shell and server versions do not match
+MongoDB Enterprise atlas-zmjsri-shard-0:PRIMARY> 
 ```
 
 Please note that the above endpoints do not include the private string.  It looks like an omission in the version 0.8 of the provider (mongodb/atlas). 
