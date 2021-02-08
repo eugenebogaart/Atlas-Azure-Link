@@ -107,7 +107,7 @@ resource "azurerm_network_security_group" "demo-vm-nsg" {
         protocol                   = "Tcp"
         source_port_range          = "*"
         destination_port_range     = "22"
-        source_address_prefix      = "*"
+        source_address_prefix      = var.source_ip
         destination_address_prefix = "*"
     }
 
@@ -133,7 +133,7 @@ resource "azurerm_network_interface" "demo-vm-nic" {
         environment = "Atlas Demo"
     }
 
-    depends_on = [ azurerm_network_interface.demo-vm-nic ]
+    # depends_on = [ azurerm_network_interface.demo-vm-nic ]
 }
 
 # Connect the security group to the network interface
