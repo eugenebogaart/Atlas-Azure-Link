@@ -145,7 +145,7 @@ resource "azurerm_network_interface_security_group_association" "demo-vm" {
 # Create virtual machine
 resource "azurerm_linux_virtual_machine" "demo-vm" {
    name                  = local.azure_vm_name
-   location              = local.location_alt
+   location              = local.location
    resource_group_name   = azurerm_resource_group.atlas-group.name
    size                  = local.azure_vm_size
    admin_username        = local.admin_username
