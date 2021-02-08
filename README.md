@@ -25,8 +25,7 @@ Initializing provider plugins...
 * Run: terraform apply
 
 ## Todo:
-* Test with terrafrom 14. and mongodb/atlas provider 0.8.1+ (does not work yet)
-* Print out private connection string when script finishes. (wait for > 0.8.2)
+* Test with terrafrom 14. 
 
 ## Basic Terraform resources in script
 * mongodbatlas_project,  creates an empty project in your Atlas account
@@ -114,17 +113,17 @@ locals {
   # Atlas region, https://docs.atlas.mongodb.com/reference/microsoft-azure/#microsoft-azure
   region                = "EUROPE_WEST"
   # Atlas cluster name
-  cluster_name          = "Sample"
+  cluster_name		      = "Sample"
   # Atlas Public providor
   provider_name         = "AZURE"
+  # Provider Region
+  provider_region       = "westeurope"
   # A Azure resource group
   resource_group_name   = "atlas-demo-link"
   # Associated Azure vnet
   vnet_name             = "atlas-link-vnet"
   # Azure location
   location              = "West Europe"
-  # Azure alt location (ips and sec groups use this)
-  location_alt          = "westeurope"
   # Azure cidr block for vnet
   address_space         = ["10.12.4.0/23"]
   # Azure subnet in vnet
@@ -134,9 +133,9 @@ locals {
   # Azure vm admin_user
   admin_username        = "testuser"
   # Azure vm size
-  azure_vm_size         = "Standard_F2"
-  # Azure vm_name       
-  azure_vm_name         = "demo-link"
+  azure_vm_size		      = "Standard_F2"
+  # Azure vm_name	
+  azure_vm_name		      = "demo-link"
 }
  
 terraform {
@@ -178,8 +177,6 @@ MongoDB server version: 4.2.12
 WARNING: shell and server versions do not match
 MongoDB Enterprise atlas-zmjsri-shard-0:PRIMARY> 
 ```
-
-Please note that the above endpoints do not include the private string.  It looks like an omission in the version 0.8 of the provider (mongodb/atlas). 
-
+ 
 ## Known Bugs
 * let me know
