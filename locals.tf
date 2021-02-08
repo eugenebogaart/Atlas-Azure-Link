@@ -4,17 +4,17 @@ locals {
   # Atlas region, https://docs.atlas.mongodb.com/reference/microsoft-azure/#microsoft-azure
   region                = "EUROPE_WEST"
   # Atlas cluster name
-  cluster_name		= "Sample"
+  cluster_name		      = "Sample"
   # Atlas Public providor
   provider_name         = "AZURE"
+  # Provider Region
+  provider_region       = "westeurope"
   # A Azure resource group
   resource_group_name   = "atlas-demo-link"
   # Associated Azure vnet
   vnet_name             = "atlas-link-vnet"
   # Azure location
   location              = "West Europe"
-  # Azure alt location (ips and sec groups use this)
-  location_alt          = "westeurope"
   # Azure cidr block for vnet
   address_space         = ["10.12.4.0/23"]
   # Azure subnet in vnet
@@ -24,8 +24,8 @@ locals {
   # Azure vm admin_user
   admin_username        = "testuser"
   # Azure vm size
-  azure_vm_size		= "Standard_F2"
+  azure_vm_size		      = "Standard_F2"
   # Azure vm_name	
-  azure_vm_name		= "demo-link"
+  azure_vm_name		      = "demo-link"
 }
  
