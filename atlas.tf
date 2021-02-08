@@ -77,7 +77,6 @@ resource "mongodbatlas_database_user" "user1" {
     key   = "Name"
     value = local.admin_username
   }
-
   scopes {
     name = mongodbatlas_cluster.this.name
     type = "CLUSTER"
