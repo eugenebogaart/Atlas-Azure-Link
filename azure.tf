@@ -85,11 +85,6 @@ resource "azurerm_public_ip" "demo-vm-ip" {
     }
 }
 
-output "public_ip_address" {
-  description = "Public IP of azure VM"
-  value       = azurerm_public_ip.demo-vm-ip.ip_address
-}
-
 # Create Network Security Group and rule
 resource "azurerm_network_security_group" "demo-vm-nsg" {
     name                = "myAtlasDemo"
@@ -211,4 +206,7 @@ resource "azurerm_linux_virtual_machine" "demo-vm" {
    }
 }
 
-
+output "public_ip_address" {
+  description = "Public IP of azure VM"
+  value       = azurerm_linux_virtual_machine.demo-vm.*.public_ip_address
+}
