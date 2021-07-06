@@ -89,7 +89,7 @@ resource "azurerm_public_ip" "demo-vm-ip" {
 resource "azurerm_network_security_group" "demo-vm-nsg" {
     name                = "myAtlasDemo"
     # Looks like changed in azurerm
-    # location                     = local.location_alt
+    # location            = local.location_alt
     location            = local.location
     resource_group_name = azurerm_resource_group.atlas-group.name
 
@@ -201,7 +201,9 @@ resource "azurerm_linux_virtual_machine" "demo-vm" {
        "wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -",
        "echo 'deb [ arch=amd64 ] http://repo.mongodb.com/apt/ubuntu bionic/mongodb-enterprise/4.4 multiverse' | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list",
        "sudo apt-get update",
-	   "sudo apt-get install -y mongodb-enterprise-shell"
+	   "sudo apt-get install -y mongodb-enterprise-shell",
+
+       "sudo rm -f /etc/resolv.conf ; sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf"
        ]
    }
 }
