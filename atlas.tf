@@ -18,7 +18,6 @@ provider "mongodbatlas" {
   # variable are provided via ENV
   # public_key = ""
   # private_key  = ""
-  version = "=0.9.1"
 }
 
 # Need a project
