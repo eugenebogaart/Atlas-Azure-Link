@@ -1,11 +1,13 @@
-# MongoDB Atlas project private linked into Azure VNet 
+# MongoDB Atlas project private endpoint into Azure VNet 
 
 ## Background
-Based on an small Proof of Concept to make Atlas available via Private linking in Azure in the same region, this script automates all steps. 
+Based on an small Proof of Concept to make Atlas available via Private endpoint in Azure in the same region, this script automates all steps. 
 The documentation on how to do this manually: https://docs.atlas.mongodb.com/security-private-endpoint 
 
 The end result of the Terraform script is a project in Atlas + a Cluster + provisioned user, private linked to Azure with a 1 vm with public interface (ssh/key).
 The vm has already MongoDB client tools installed.
+
+<img style="max-width: 100%; height: auto; " src="overview.jpg">
 
 ## Prerequisites:
 * Authenticate into Azure via CLI with:  az login
