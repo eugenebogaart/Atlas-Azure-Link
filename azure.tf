@@ -17,7 +17,6 @@
 provider "azurerm" {
     # whilst the `version` attribute is optional,
     # we recommend pinning to a given version of the Provider
-    version = "=2.45"
     subscription_id = var.azure_subscription_id
     tenant_id = var.azure_tenant_id
     features {}
