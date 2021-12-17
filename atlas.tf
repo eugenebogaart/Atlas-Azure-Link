@@ -40,25 +40,54 @@ resource "mongodbatlas_privatelink_endpoint_service" "test" {
   provider_name = local.provider_name
 }
 
-resource "mongodbatlas_cluster" "this" {
- name                  = local.cluster_name
- project_id            = mongodbatlas_project.proj1.id
+# resource "mongodbatlas_cluster" "this" {
+#  name                  = local.cluster_name
+#  project_id            = mongodbatlas_project.proj1.id
 
- replication_factor           = 3
- # not allowed for version 4.2 clusters and above
- # backup_enabled             = true
- provider_backup_enabled      = true
- auto_scaling_disk_gb_enabled = true
- mongo_db_major_version       = "4.2"
+#  replication_factor           = 3
+#  # not allowed for version 4.2 clusters and above
+#  # backup_enabled             = true
+#  # provider_backup_enabled      = true
+#  cloud_backup                 = true
+#  auto_scaling_disk_gb_enabled = true
+#  mongo_db_major_version       = "4.2"
 
- provider_name               = local.provider_name
- provider_instance_size_name = "M30"
- # this provider specific, why?
- provider_region_name        = local.region
+#  provider_name               = local.provider_name
+#  provider_instance_size_name = "M30"
+#  # this provider specific, why?
+#  provider_region_name        = local.region
+# }
+
+resource "mongodbatlas_advanced_cluster" "this" {
+  name                  = local.cluster_name
+  project_id            = mongodbatlas_project.proj1.id
+  cluster_type          = "REPLICASET"
+  backup_enabled        = false
+  version_release_system = "CONTINUOUS"
+
+  replication_specs {
+    region_configs {
+      electable_specs {
+        instance_size = "M10"
+        node_count    = 3
+      }
+      provider_name   = local.provider_name
+      priority        = 7
+      region_name     = local.region
+
+      auto_scaling {
+        compute_enabled = true
+        compute_min_instance_size = "M10"
+        compute_max_instance_size = "M30"
+        disk_gb_enabled = true
+      }
+    }
+  }  
 }
 
+
 output "atlasclusterstring" {
-   value = mongodbatlas_cluster.this.connection_strings[0].private_endpoint[0].srv_connection_string
+   value = mongodbatlas_advanced_cluster.this.connection_strings[0].private_endpoint[0].srv_connection_string
 }
 
 # DATABASE USER
@@ -77,7 +106,7 @@ resource "mongodbatlas_database_user" "user1" {
     value = local.admin_username
   }
   scopes {
-    name = mongodbatlas_cluster.this.name
+    name = mongodbatlas_advanced_cluster.this.name
     type = "CLUSTER"
   }
 }
