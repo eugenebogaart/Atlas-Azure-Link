@@ -45,7 +45,7 @@ Initializing provider plugins...
 * azurerm_network_interface,
 * azurerm_network_interface_security_group_association,
 * azurerm_linux_virtual_machine,
-* mongodbatlas_cluster, finally create cluster 
+* mongodbatlas_advanced_cluster, finally create cluster 
 
  
 ## Configure Script - Credentials: "variables.tf"
