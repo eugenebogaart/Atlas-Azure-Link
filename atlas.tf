@@ -53,16 +53,18 @@ resource "mongodbatlas_privatelink_endpoint_service" "test" {
 #  mongo_db_major_version       = "4.2"
 
 #  provider_name               = local.provider_name
-#  provider_instance_size_name = "M30"
+#  provider_instance_size_name = "M10"
 #  # this provider specific, why?
 #  provider_region_name        = local.region
 # }
+
 
 resource "mongodbatlas_advanced_cluster" "this" {
   name                  = local.cluster_name
   project_id            = mongodbatlas_project.proj1.id
   cluster_type          = "REPLICASET"
   backup_enabled        = false
+  # mongo_db_major_version = "6.0"
   version_release_system = "CONTINUOUS"
 
   replication_specs {
@@ -77,6 +79,7 @@ resource "mongodbatlas_advanced_cluster" "this" {
 
       auto_scaling {
         compute_enabled = true
+        compute_scale_down_enabled = true
         compute_min_instance_size = "M10"
         compute_max_instance_size = "M30"
         disk_gb_enabled = true
@@ -86,9 +89,14 @@ resource "mongodbatlas_advanced_cluster" "this" {
 }
 
 
+
 output "atlasclusterstring" {
    value = mongodbatlas_advanced_cluster.this.connection_strings[0].private_endpoint[0].srv_connection_string
 }
+
+# output "atlasclusterstring" {
+#    value = mongodbatlas_cluster.this.connection_strings[0].private_endpoint[0].srv_connection_string
+# }
 
 # DATABASE USER
 resource "mongodbatlas_database_user" "user1" {
