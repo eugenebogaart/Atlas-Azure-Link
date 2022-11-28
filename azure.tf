@@ -193,14 +193,14 @@ resource "azurerm_linux_virtual_machine" "demo-vm" {
        "sudo apt-get -y update",
        "sudo apt-get -y install python3-pip",
        "sudo apt-get -y update",
-       "sudo pip3 install pymongo==3.9.0",
+       "sudo pip3 install pymongo==4.0.1",
        "sudo pip3 install faker",
        "sudo pip3 install dnspython",
 
-       "wget -qO - https://www.mongodb.org/static/pgp/server-4.4.asc | sudo apt-key add -",
-       "echo 'deb [ arch=amd64 ] http://repo.mongodb.com/apt/ubuntu bionic/mongodb-enterprise/4.4 multiverse' | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list",
+       "wget -qO - https://www.mongodb.org/static/pgp/server-6.0.asc | sudo apt-key add -",
+       "echo 'deb [ arch=amd64 ] http://repo.mongodb.com/apt/ubuntu bionic/mongodb-enterprise/6.0 multiverse' | sudo tee /etc/apt/sources.list.d/mongodb-enterprise.list",
        "sudo apt-get update",
-	   "sudo apt-get install -y mongodb-enterprise-shell",
+	   "sudo apt-get install -y mongodb-enterprise-shell mongodb-mongosh",
 
        "sudo rm -f /etc/resolv.conf ; sudo ln -s /run/systemd/resolve/resolv.conf /etc/resolv.conf"
        ]
