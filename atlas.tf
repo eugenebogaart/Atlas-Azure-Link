@@ -85,9 +85,21 @@ resource "mongodbatlas_advanced_cluster" "this" {
         disk_gb_enabled = true
       }
     }
-  }  
-}
+  }
 
+  labels {
+        key   = "Owner"
+        value = local.project_id
+  }
+  labels {
+        key   = "date"
+        value = "${timestamp()}"
+  }  
+
+  # Label "date" has always a different value, one can prevent updates with lifecycle 
+  lifecycle { ignore_changes = [labels] }
+
+}
 
 
 output "atlasclusterstring" {
@@ -113,6 +125,15 @@ resource "mongodbatlas_database_user" "user1" {
     key   = "Name"
     value = local.admin_username
   }
+
+  labels {
+        key   = "date"
+        value = "${timestamp()}"
+  }  
+
+  # Label "date" has always a different value, one can prevent updates with lifecycle 
+  lifecycle { ignore_changes = [labels] }
+
   scopes {
     name = mongodbatlas_advanced_cluster.this.name
     type = "CLUSTER"
