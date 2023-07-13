@@ -143,3 +143,33 @@ resource "mongodbatlas_database_user" "user1" {
 output "user1" {
   value = mongodbatlas_database_user.user1.username
 }
+
+
+
+# Create the sample online archive demo w
+# with Sample dataset is not possible 
+# sample dataset cannot be loaded via Terraform
+#
+# resource "mongodbatlas_online_archive" "test" {
+#     project_id   = mongodbatlas_project.proj1.id
+#     cluster_name = mongodbatlas_advanced_cluster.this.name
+#     coll_name    = "data"
+#     db_name      = "sample_weatherdata"
+
+#     partition_fields {
+#         field_name = "ts"
+#         order = 0
+#     }
+
+#     partition_fields {
+#         field_name = "sourcename"
+#         order = 1
+#     }
+
+#     criteria {
+#         type = "DATE"
+#         date_field = "created"
+#         expire_after_days = 150
+#     }
+
+# }
